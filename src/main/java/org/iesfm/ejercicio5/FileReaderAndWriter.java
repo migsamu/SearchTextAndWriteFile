@@ -1,15 +1,14 @@
 package org.iesfm.ejercicio5;
 
-import com.sun.source.tree.IfTree;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.Scanner;
 
-public class FileFolderReader {
+public class FileReaderAndWriter {
 
-    private static final Logger log = LoggerFactory.getLogger(FileFolderReader.class);
+    private static final Logger log = LoggerFactory.getLogger(FileReaderAndWriter.class);
     private static final Scanner scan = new Scanner(System.in);
 
     public File getFile() {
@@ -37,23 +36,18 @@ public class FileFolderReader {
                     count++;
                 }
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return count;
     }
 
-    public void writeFile(File finalFile, int count){
+    public void writeFile(File finalFile, int count) {
 
-        try {
-            FileWriter writer = new FileWriter(finalFile);
+        try (FileWriter writer = new FileWriter(finalFile)) {
+            writer.write("La palabra aparecce " + count + " veces" + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
-
 }

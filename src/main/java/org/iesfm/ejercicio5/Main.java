@@ -7,11 +7,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        FileFolderReader fileFolderReader = new FileFolderReader();
-        File originFile = fileFolderReader.getFile();
-        String text = fileFolderReader.getText();
-        File finalFile = fileFolderReader.getFile();
-
+        FileReaderAndWriter fileReaderAndWriter = new FileReaderAndWriter();
+        File originFile = fileReaderAndWriter.getFile();
+        String text = fileReaderAndWriter.getText();
+        File finalFile = fileReaderAndWriter.getFile();
+        int count = fileReaderAndWriter.countText(originFile, text);
+        fileReaderAndWriter.writeFile(finalFile, count);
 
 
     }
