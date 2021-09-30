@@ -1,9 +1,12 @@
+
 package org.iesfm.ejercicio6;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CreateNumberFile {
@@ -23,7 +26,14 @@ public class CreateNumberFile {
         return new File("/tmp/" + number + ".txt");
     }
 
-    public void writeFile(File file, int number){
-        
+    public void writeFile(File file, int number) {
+        try (FileWriter writer = new FileWriter(file)) {
+            for (int i = 0; i <= number; i++) {
+                writer.write(i + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
