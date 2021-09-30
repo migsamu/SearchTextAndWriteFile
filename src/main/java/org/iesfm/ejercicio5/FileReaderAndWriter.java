@@ -13,9 +13,9 @@ public class FileReaderAndWriter {
 
     public File getFile() {
         log.info("Introduce el directorio del archivo...");
-        String file = scan.nextLine();
+        String filePath = scan.nextLine();
 
-        return new File(file);
+        return new File(filePath);
     }
 
     public String getText() {
